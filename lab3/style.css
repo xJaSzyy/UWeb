@@ -1,0 +1,50 @@
+body {
+   background-color: #FFFADD;
+}
+
+h1 {
+    text-align: center;
+    color: #AE445A;
+    padding-top: 20px;
+}
+
+h2 {
+    padding-left: 20px;
+    color: #AE445A;
+}
+
+h3 {
+    color: #57375D;
+}
+
+.about {
+    padding-left: 50px;
+
+}
+
+.students {
+    padding-left: 50px;
+}
+
+.students_email {
+    padding-bottom: 50px;
+}
+
+.links {
+    padding-left: 50px;
+}
+
+.links_content {
+    padding-left: 20px;
+}
+
+a {
+    color: blue;
+}
+
+img {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+}
+
