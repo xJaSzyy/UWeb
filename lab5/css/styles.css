@@ -9,6 +9,16 @@ h1 {
     line-height: 1.5;
 }
 
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 1.5;
+    padding-top: 7%;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
 }
@@ -39,4 +49,49 @@ body {
 .title-image {
     width: 60%;
     transform: rotate(25deg);
+}
+
+#testimonials {
+    text-align: center;
+    background-color: #ef8172;
+    color: #fff;
+}
+
+.testimonial-image {
+    width: 10%;
+    border-radius: 100%;
+    margin: 20px;
+    margin-bottom: 7%;
+}
+
+#press {
+    text-align: center;
+    padding-bottom: 3%;
+    background-color: #ef8172;
+}
+
+.press-logo {
+    width: 15%;
+    margin: 20px 20px 50px;
+}
+
+#pricing {
+    text-align: center;
+    background-color: #fff;
+}
+
+#cta {
+    color: #fff;
+    text-align: center;
+    background-color: #ff3c68;
+}
+
+#footer {
+    text-align: center;
+}
+
+#features {
+    background-color: #fff;
+    padding: 15%;
+    text-align: center;
 }
