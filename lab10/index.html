@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>ЗАО Птицефабрика №1</title>
+</head>
+
+<body>
+
+    <form action="/upload" method="post">
+        <h1>ЗАО Птицефабрика №1</h1>
+        <div class="field">
+            <label for="lastname">Фамилия</label>
+            <input id="lastname" name="lastname" type="text" pattern="[А-Яа-яЁё\s]+"
+                title="Пожалуйста, введите только буквы на русском языке">
+        </div>
+        <div class="field">
+            <label for="initial">Инициалы</label>
+            <input id="initial" name="initial" type="text" pattern="[А-ЯЁ]\.[А-ЯЁ]\."
+                title="Пожалуйста, введите инициалы в формате А.Б.">
+        </div>
+        <div class="field">
+            <label for="password">Пароль</label>
+            <input id="password" name="password" type="password" minlength="6">
+        </div>
+        <div class="field">
+            <label for="address">Адрес получателя</label>
+            <input id="address" name="address" type="text">
+        </div>
+        <div class="field">
+            <label for="count">Количество</label>
+            <input id="count" name="count" type="text" pattern="[0-9]+" title="Пожалуйста, введите только цифры">
+        </div>
+        <div class="field">
+            <label>Тип</label>
+            <select id="type1" name="type1"> %
+                <option value="Куриные" name="Куриные" selected>Куриные</option>%
+                <option value="Перепилиные" name="Перепилиные">Перепилиные</option>%
+                <option value="Утиные" name="Утиные">Утиные</option>%
+                <option value="Страусиные" name="Страусиные">Страусиные</option>%
+            </select>
+            <select id="type2" name="type2"> %
+                <option value="Обычные"name="Обычные" selected>Обычные</option>%
+                <option value="Отборные" name="Отборные">Отборные</option>%
+            </select>
+        </div>
+        <div class="field">
+            <label>Доставка</label>
+            <input type="radio" name="delivery" value="Почтой" checked>Почтой
+            <input type="radio" name="delivery" value="Электронно">Электронно
+            <input type="radio" name="delivery" value="Курьером">Курьером
+        </div>
+        <div class="field">
+            <label>Требуется накладная</label>
+            <input id="invoice" name="invoice" type="checkbox">
+        </div>
+        <div class="field">
+            <label>Дополнительная информация</label>
+            <textarea id="extra" name="extra" cols=38 rows=3></textarea>
+        </div>
+        <div class="field-button">
+            <input type="submit" value="Заказать">
+            <input type="button" value="Отменить">
+        </div>
+    </form>
+</body>
+
+</html>

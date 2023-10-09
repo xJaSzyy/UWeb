@@ -1,0 +1,16 @@
+.field {
+    padding-bottom: 5px;
+    padding-left: 250px;
+  }
+
+.field label {
+    display: block;
+    float: left;
+    width: 210px;
+    height: 15px;
+}
+
+.field-button {
+    padding-bottom: 5px;
+    padding-left: 385px;
+}
