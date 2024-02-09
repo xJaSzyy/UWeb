@@ -1,14 +1,27 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+    val tree = BinaryTree()
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+    //вставка
+    tree.insert(5)
+    tree.insert(3)
+    tree.insert(1)
+    tree.insert(34)
+    tree.insert(9)
+    tree.insert(7)
+    tree.insert(11)
+
+    //обход
+    tree.traversal()
+    println()
+
+    //удаление + повторный обход
+    tree.delete(7)
+    tree.traversal()
+    println()
+
+    //поиск
+    println(tree.search(1)) //элемент будет найден т.к. существует
+    println(tree.search(99)) //элемент не будет найден
 }

@@ -1,7 +1,7 @@
 class MobilePhone(phoneNumber: String) {
 
-    val myPhone: String = phoneNumber
-    var myContacts: MutableList<Contact> = mutableListOf()
+    private val myPhone: String = phoneNumber
+    private var myContacts: MutableList<Contact> = mutableListOf()
 
     init {
         myContacts.add(Contact("Me", myPhone))
