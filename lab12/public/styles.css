@@ -1,0 +1,32 @@
+.console {
+  display: flex; 
+}
+
+.endpoints {
+  flex: 1; 
+  padding: 10px;
+  background-color: brown;
+}
+
+.output {
+  flex: 1; 
+  padding: 10px;
+  border-left: 1px solid #ccc; 
+  background-color: burlywood;
+  display: flex;
+}
+
+.request {
+    flex: 1; 
+    padding: 10px;
+}
+
+.response{
+    flex: 1; 
+    padding: 10px;
+    border-left: 1px solid #ccc; 
+}
+
+#url, #response-code {
+    color: green;
+}

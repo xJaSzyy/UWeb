@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UWeb 12</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+
+<body>
+    <section class="console">
+        <div class="endpoints">
+            <ul>
+                <li><button id="getListUsersButton">LIST USERS</button></li>
+                <li><button id="getSingleUserButton">SINGLE USER</button></li>
+                <li><button id="getSingleUserNotFoundButton">SINGLE USER NOT FOUND</button></li>
+                <li><button id="getListResourceButton">LIST &lt;RESOURCE&gt;</button></li>
+                <li><button id="getSingleResourceButton">SINGLE &lt;RESOURCE&gt;</button></li>
+                <li><button id="getSingleResourceNotFoundButton">SINGLE &lt;RESOURCE&gt; NOT FOUND</button></li>
+                <li><button id="createUserButton">CREATE</button></li>
+                <li><button id="updateUserButton">UPDATE</button></li>
+                <li><button id="updateUserPatchButton">UPDATE p</button></li>
+                <li><button id="deleteUserButton">DELETE</button></li>
+                <li><button id="registerSuccessfulButton">REGISTER - SUCCESSFUL</button></li>
+                <li><button id="registerUnsuccessfulButton">REGISTER - UNSUCCESSFUL</button></li>
+                <li><button id="loginSuccessfulButton">LOGIN - SUCCESSFUL</button></li>
+                <li><button id="loginUnsuccessfulButton">LOGIN - UNSUCCESSFUL</button></li>
+                <li><button id="delayedResponseButton">DELAYED RESPONSE</button></li>
+            </ul>
+        </div>
+        <div class="output">
+            <div class="request">
+                <strong>Request
+                    <a id="url-link" href=""><span id="url"></span></a>
+                </strong>
+            </div>
+            <div class="response">
+                <strong>Response
+                    <span id="response-code">200</span>
+                </strong>
+                <pre id="responseResult"></pre>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const getListUsersButton = document.getElementById("getListUsersButton");
+        const getSingleUserButton = document.getElementById("getSingleUserButton");
+        const getSingleUserNotFoundButton = document.getElementById("getSingleUserNotFoundButton");
+        const getListResourceButton = document.getElementById("getListResourceButton");
+        const getSingleResourceButton = document.getElementById("getSingleResourceButton");
+        const getSingleResourceNotFoundButton = document.getElementById("getSingleResourceNotFoundButton");
+        const createUserButton = document.getElementById("createUserButton");
+        const updateUserButton = document.getElementById("updateUserButton");
+        const updateUserPatchButton = document.getElementById("updateUserPatchButton");
+        const deleteUserButton = document.getElementById("deleteUserButton");
+        const registerSuccessfulButton = document.getElementById("registerSuccessfulButton");
+        const registerUnsuccessfulButton = document.getElementById("registerUnsuccessfulButton");
+        const loginSuccessfulButton = document.getElementById("loginSuccessfulButton");
+        const loginUnsuccessfulButton = document.getElementById("loginUnsuccessfulButton");
+        const delayedResponseButton = document.getElementById("delayedResponseButton");
+
+        const responseResult = document.getElementById("responseResult");
+
+        const url = document.getElementById("url");
+        const url_link = document.getElementById("url-link");
+        const response_code = document.getElementById("response-code");
+
+        getListUsersButton.addEventListener("click", async () => {
+            const response = await fetch("/getListUsers");
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/users?page=2";
+            url_link.href = "https://reqres.in/api/users?page=2";
+        })
+
+        getSingleUserButton.addEventListener("click", async () => {
+            const response = await fetch("/getSingleUser");
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/users/2";
+            url_link.href = "https://reqres.in/api/users/2";
+        })
+
+        getSingleUserNotFoundButton.addEventListener("click", async () => {
+            const response = await fetch("/getSingleUserNotFound");
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/users/23";
+            url_link.href = "https://reqres.in/api/users/23";
+        })
+
+        getListResourceButton.addEventListener("click", async () => {
+            const response = await fetch("/getListResource");
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/unknown";
+            url_link.href = "https://reqres.in/api/unknown";
+        })
+
+        getSingleResourceButton.addEventListener("click", async () => {
+            const response = await fetch("/getSingleResource");
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/unknown/2";
+            url_link.href = "https://reqres.in/api/unknown/2";
+        })
+
+        getSingleResourceNotFoundButton.addEventListener("click", async () => {
+            const response = await fetch("/getSingleResourceNotFound");
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/unknown/23";
+            url_link.href = "https://reqres.in/api/unknown/23";
+        })
+
+        createUserButton.addEventListener("click", async () => {
+            const response = await fetch(`/createUser`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/users";
+            url_link.href = "https://reqres.in/api/users";
+        });
+
+        updateUserButton.addEventListener("click", async () => {
+            const response = await fetch(`/updateUser`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/users/2";
+            url_link.href = "https://reqres.in/api/users/2";
+        });
+
+        updateUserPatchButton.addEventListener("click", async () => {
+            const response = await fetch(`/updateUserPatch`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/users/2";
+            url_link.href = "https://reqres.in/api/users/2";
+        });
+
+        deleteUserButton.addEventListener("click", async () => {
+            const response = await fetch(`/deleteUser`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/users/2";
+            url_link.href = "https://reqres.in/api/users/2";
+        });
+
+        registerSuccessfulButton.addEventListener("click", async () => {
+            const response = await fetch(`/registerSuccessful`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/register";
+            url_link.href = "https://reqres.in/api/register";
+        });
+
+        registerUnsuccessfulButton.addEventListener("click", async () => {
+            const response = await fetch(`/registerUnsuccessful`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/register";
+            url_link.href = "https://reqres.in/api/register";
+        });
+
+        loginSuccessfulButton.addEventListener("click", async () => {
+            const response = await fetch(`/loginSuccessful`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/login";
+            url_link.href = "https://reqres.in/api/login";
+        });
+
+        loginUnsuccessfulButton.addEventListener("click", async () => {
+            const response = await fetch(`/loginUnsuccessful`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name }),
+            });
+
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/login";
+            url_link.href = "https://reqres.in/api/login";
+        });
+
+        delayedResponseButton.addEventListener("click", async () => {
+            const response = await fetch("/delayedResponse");
+            const data = await response.json();
+            responseResult.innerHTML = JSON.stringify(data, null, 2);
+            url.textContent = "/api/users?delay=3";
+            url_link.href = "https://reqres.in/api/users?delay=3";
+        })
+    </script>
+</body>
+
+</html>
