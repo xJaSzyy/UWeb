@@ -1,3 +1,4 @@
+
 class MobilePhone(phoneNumber: String) {
 
     private val myPhone: String = phoneNumber
@@ -12,45 +13,28 @@ class MobilePhone(phoneNumber: String) {
     }
 
     fun updateContact(oldContact: Contact, newContact: Contact) : Boolean {
-        for (i in 0..myContacts.size) {
-            if (myContacts[i].name == oldContact.name &&
-                myContacts[i].phoneNumber == oldContact.phoneNumber) {
-                myContacts[i] = newContact
+        myContacts.forEach {
+            if (it.name == oldContact.name && it.phoneNumber == oldContact.phoneNumber) {
+                removeContact(it)
+                addNewContact(newContact)
                 return true
             }
         }
 
-        return false;
+        return false
     }
 
-    fun removeContact(removeContact: Contact) : Boolean {
-        for (contact in myContacts) {
-            if (contact.name == removeContact.name &&
-                contact.phoneNumber == removeContact.phoneNumber) {
-                myContacts.remove(contact)
-                return true;
-            }
-        }
-
-        return false;
+    fun removeContact(contact: Contact) : Boolean {
+        return myContacts.remove(contact)
     }
 
     fun findContact(contact: Contact) : Int {
-        for (i in 0..myContacts.size) {
-            if (myContacts[i].name == contact.name &&
-                myContacts[i].phoneNumber == contact.phoneNumber) {
-                return i
-            }
-        }
-
-        return -1
+        return myContacts.indexOf(contact)
     }
 
     fun queryContact(name: String) : Contact? {
-        for (i in 0..myContacts.size) {
-            if (myContacts[i].name == name) {
-                return myContacts[i]
-            }
+        myContacts.forEach { contact ->
+            if (contact.name == name) return contact
         }
 
         return null

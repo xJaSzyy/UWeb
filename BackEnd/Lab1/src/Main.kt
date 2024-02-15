@@ -8,10 +8,9 @@ fun main() {
 
     //Добавить контакт
     myPhone.addNewContact(contact1)
-    myPhone.printContacts()
 
     //Изменить контакт(из старого в новый)
-    val isUpdate: Boolean = myPhone.updateContact(contact1, contact2)
+    val isUpdate: Boolean = myPhone.updateContact(contact1.phoneNumber, contact2.phoneNumber)
     println("\nUpdate:$isUpdate")
     myPhone.printContacts()
 
@@ -28,6 +27,6 @@ fun main() {
     myPhone.printContacts()
 
     //Поиск по имени
-    val semenContact: Contact? = myPhone.queryContact("Me")
+    val semenContact: Contact? = myPhone.queryContact("Semen")
     println("\n${semenContact?.name} ${semenContact?.phoneNumber}")
 }

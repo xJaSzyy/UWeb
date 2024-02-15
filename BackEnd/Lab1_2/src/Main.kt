@@ -22,6 +22,6 @@ fun main() {
     println()
 
     //поиск
-    println(tree.search(1)) //элемент будет найден т.к. существует
+    println(tree.search(1)?.value) //элемент будет найден т.к. существует
     println(tree.search(99)) //элемент не будет найден
 }
