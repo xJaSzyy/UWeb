@@ -1,5 +1,6 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+package org.example
+
+
 fun main() {
     val myPhone: MobilePhone = MobilePhone("+79521654131")
 
@@ -15,9 +16,9 @@ fun main() {
     myPhone.printContacts()
 
     //Удалить контакт
-    val isRemove: Boolean = myPhone.removeContact(contact2)
+    /*val isRemove: Boolean = myPhone.removeContact(contact2)
     println("\nRemove:$isRemove")
-    myPhone.printContacts()
+    myPhone.printContacts()*/
 
     //Поиск индекса
     myPhone.addNewContact(contact1)
