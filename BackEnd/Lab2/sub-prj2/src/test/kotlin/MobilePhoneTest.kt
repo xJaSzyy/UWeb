@@ -19,7 +19,7 @@ class MobilePhoneTest {
     @Test
     fun removeContact() {
         try {
-            val isRemove = phone.removeContact(Contact("выпыпы", "+79999999999"))
+            val isRemove = phone.removeContact(Contact("dgdfg", "+79999999999"))
             assertTrue(isRemove)
             logger.info("Тест пройден")
         } catch (e: AssertionError) {
