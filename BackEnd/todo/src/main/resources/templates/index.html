@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>Задача</h1>
+    <form th:action="@{/todo}" th:method="post" th:object="${todoItem}">
+        <label for="name" style="margin-right: 16px">Название</label>
+        <input id="name" type="text" name="text" style="margin-bottom: 8px"><br>
+        <label for="subtasksIds" style="margin-right: 8px">Подзадачи</label>
+        <input id="subtasksIds" type="text" name="subtasksIds" style="margin-bottom: 8px"><br>
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+<div>
+    <h1>Список задач</h1>
+
+    <div th:each="item : ${todos}">
+        <span th:text="'Id: ' + ${item.id}"></span><br>
+        <span th:text="'Название: ' + ${item.text}"></span><br>
+        <span th:text="'Id Подзадач: ' + ${item.subtasksIds}"></span><br>
+        <span th:text="'Статус: ' + ${item.state}"></span>
+        <input type="checkbox" th:onclick="|window.location.href='/switchState/${item.id}'|" th:checked="${item.state}"><br>
+        <span th:if="${item.subtasksIds.size > 0}">
+            <ul>
+                <li th:each="subItem : ${item.subtasksIds}">
+                    <th:block th:if="${subtasksMap.get(subItem) != null}">
+                        <span th:text="'Id: ' + ${subtasksMap.get(subItem).id}">Id</span><br>
+                        <span th:text="'Название: ' + ${subtasksMap.get(subItem).text}">Название</span><br>
+                        <span th:text="'Id Подзадач: ' + ${subtasksMap.get(subItem).subtasksIds}"></span><br>
+                        <span th:text="'Статус: ' + ${subtasksMap.get(subItem).state}"></span>
+                    </th:block>
+                    <th:block th:if="${subtasksMap.get(subItem) == null}">
+                        <span th:text="'Не найдено'"></span>
+                    </th:block>
+                </li>
+            </ul>
+        </span>
+        <form th:action="'/todo/' + ${item.id}" method="post">
+            <button type="submit">Удалить</button>
+            <!--<button th:onclick="|window.location.href='/todo/${item.id}'|">Удалить</button><br><br>-->
+        </form>
+    </div>
+</div>
+</body>
+</html>
